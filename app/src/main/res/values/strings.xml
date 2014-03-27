@@ -47,6 +47,14 @@
     <string name="add_income_enddate">Klik om een einddatum te selecteren</string>
 	
     <string name="add_insurance_title">Verzekering toevoegen</string>
+    <string name="add_insurance_insurer_label">Verzekeraar</string>
+    <string name="add_insurance_insurer">Voer de naam van de verzekeraar in</string>
+    <string name="add_insurance_productname_label">Productnaam</string>
+    <string name="add_insurance_productname">Voer de naam van het product in</string>
+    <string name="add_insurance_insured_label">Verzekerde(n)</string>
+    <string name="add_insurance_insured">Voer de namen van de verzekerde(n) in</string>
+    <string name="add_insurance_premium_label">Premie</string>
+    <string name="add_insurance_premium">Voer de premie in euro\'s in</string>
     
     <string name="dashboard_title">Dashboard</string>
 
