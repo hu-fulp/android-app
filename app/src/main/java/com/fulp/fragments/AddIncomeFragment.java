@@ -8,7 +8,6 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -30,7 +29,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	mRootView = inflater.inflate(R.layout.inkomen_toevoegen, container, false);
+    	mRootView = inflater.inflate(R.layout.add_income, container, false);
         
         getActivity().setTitle(R.string.add_income_title);
         //Setup spinners
@@ -93,6 +92,6 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 	@Override
 	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 		monthOfYear++;
-		mDateEdit.setText("" + monthOfYear + "-" + dayOfMonth + "-" + year);
+		mDateEdit.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year);
 	}
 }

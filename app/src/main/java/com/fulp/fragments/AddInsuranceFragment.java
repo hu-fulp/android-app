@@ -13,7 +13,7 @@ public class AddInsuranceFragment extends Fragment {
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	mRootView = inflater.inflate(R.layout.verzekering_toevoegen, container, false);
+    	mRootView = inflater.inflate(R.layout.add_insurance, container, false);
         
         getActivity().setTitle(R.string.add_insurance_title);
         

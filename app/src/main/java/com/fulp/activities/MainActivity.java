@@ -1,20 +1,15 @@
 package com.fulp.activities;
 
 import com.fulp.R;
+import com.fulp.fragments.AddIncomeFragment;
+import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.DashboardFragment;
-import com.fulp.fragments.InkomenToevoegenFragment;
-import com.fulp.fragments.VerzekeringenToevoegenFragment;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.SearchManager;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnDateSetListener{
 	
@@ -38,8 +32,8 @@ public class MainActivity extends Activity implements OnDateSetListener{
     private String[] mMenuItems;
 	
     //Fragment
-    private InkomenToevoegenFragment inkomenToevoegen;
-    private VerzekeringenToevoegenFragment verzekeringToevoegen;
+    private AddIncomeFragment inkomenToevoegen;
+    private AddInsuranceFragment verzekeringToevoegen;
     private DashboardFragment dashboard;
     
 	@Override
@@ -130,12 +124,12 @@ public class MainActivity extends Activity implements OnDateSetListener{
         		break;
         	case 1:
         		//Inkomsten
-        		inkomenToevoegen = new InkomenToevoegenFragment();
+        		inkomenToevoegen = new AddIncomeFragment();
         		fragmentManager.beginTransaction().replace(R.id.content_frame, inkomenToevoegen).commit();
         		break;
         	case 2:
         		//Verzekeringen
-        		verzekeringToevoegen = new VerzekeringenToevoegenFragment();
+        		verzekeringToevoegen = new AddInsuranceFragment();
         		fragmentManager.beginTransaction().replace(R.id.content_frame, verzekeringToevoegen).commit();
         		break;
         	default:
@@ -164,7 +158,7 @@ public class MainActivity extends Activity implements OnDateSetListener{
     public void setTitle(CharSequence title) {
         mTitle = title;
         getActionBar().setTitle(mTitle);
-        
+
     }
     
     @Override
