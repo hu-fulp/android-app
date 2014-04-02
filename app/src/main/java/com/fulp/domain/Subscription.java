@@ -17,6 +17,9 @@ public class Subscription {
     }
 
     public void setName(String name) {
+        if(name.isEmpty()){
+            throw new IllegalArgumentException("Naam mag niet leeg zijn");
+        }
         this.name = name;
     }
 
@@ -25,6 +28,9 @@ public class Subscription {
     }
 
     public void setCategory(String category) {
+        if(category.isEmpty()){
+            throw new IllegalArgumentException("Categorie mag niet leeg zijn");
+        }
         this.category = category;
     }
 
@@ -33,6 +39,9 @@ public class Subscription {
     }
 
     public void setEnd(String end) {
+        if(start.isEmpty()){
+            throw new IllegalArgumentException("Startdatum mag niet leeg zijn");
+        }
         this.end = end;
     }
 
@@ -41,6 +50,9 @@ public class Subscription {
     }
 
     public void setAmount(double amount) {
+        if(amount == 0.0){
+            throw new IllegalArgumentException("Bedrag mag niet leeg zijn");
+        }
         this.amount = amount;
     }
 
@@ -57,6 +69,9 @@ public class Subscription {
     }
 
     public void setInterval(String interval) {
+        if(interval.isEmpty()){
+            throw new IllegalArgumentException("Interval mag niet leeg zijn");
+        }
         this.interval = interval;
     }
 }

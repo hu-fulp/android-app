@@ -4,6 +4,8 @@ import com.fulp.R;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
+import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.income.CreateIncomeTask;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
@@ -50,8 +52,8 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-
-                    Income income = createIncome();
+                Income income = createIncome();
+                if(income != null){
                     PostDataTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
                     createIncomeTask.execute();
                 }
@@ -133,7 +135,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 	@Override
 	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 		monthOfYear++;
-		mDateEdit.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year);
+		mDateEdit.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth);
 	}
 
     @Override

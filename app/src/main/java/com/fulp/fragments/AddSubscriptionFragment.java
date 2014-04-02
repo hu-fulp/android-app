@@ -55,16 +55,8 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                boolean validInput = ValidateInput();
-                if(validInput){
-                    Subscription subscription = new Subscription();
-                    subscription.setName("test");
-                    subscription.setAmount(1);
-                    subscription.setStart("2014-01-01");
-                    subscription.setEnd("2015-01-01");
-                    subscription.setInterval("month");
-                    subscription.setCategory("internet");
-
+                Subscription subscription = createSubscription();
+                if(subscription != null){
                     PostDataTask createSubscriptionTask = new CreateSubscriptionTask(webserviceListener, subscription);
                     createSubscriptionTask.execute();
                 }
@@ -89,8 +81,33 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
         intervalSpinner.setOnItemSelectedListener(this);
     }
 
-    private boolean ValidateInput() {
-        return true;
+    private Subscription createSubscription(){
+        String name = ((EditText)mRootView.findViewById(R.id.add_subscription_name)).getText().toString();
+        String category = ((Spinner)mRootView.findViewById(R.id.add_subscription_category_spinner)).getSelectedItem().toString();
+        String interval = ((Spinner)mRootView.findViewById(R.id.add_subscription_interval_spinner)).getSelectedItem().toString();
+        String amountText = ((EditText)mRootView.findViewById(R.id.add_subscription_amount)).getText().toString();
+        Double amount;
+        if(amountText == "")
+            amount = 0.0;
+        else
+            amount = Double.parseDouble(amountText);
+        String start = ((EditText)mRootView.findViewById(R.id.add_subscription_startdate)).getText().toString();
+        String end = ((EditText)mRootView.findViewById(R.id.add_subscription_enddate)).getText().toString();
+        try{
+            Subscription subscription = new Subscription();
+            subscription.setName(name);
+            subscription.setCategory(category);
+            subscription.setInterval(interval);
+            subscription.setAmount(amount);
+            subscription.setStart(start);
+            subscription.setEnd(end);
+            return subscription;
+        }
+        catch(IllegalArgumentException iae){
+            Toast toast = Toast.makeText(getActivity(), iae.getMessage(), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        return null;
     }
 
     @Override
@@ -103,7 +120,7 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
     @Override
     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
         monthOfYear++;
-        mDateEdit.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year);
+        mDateEdit.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth);
     }
 
     @Override
