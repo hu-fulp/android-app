@@ -100,8 +100,8 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
         }
         String type = ((Spinner)mRootView.findViewById(R.id.add_income_type_spinner)).getSelectedItem().toString();
         String interval = ((Spinner)mRootView.findViewById(R.id.add_income_interval_spinner)).getSelectedItem().toString();
-        String start = ((EditText)mRootView.findViewById(R.id.add_income_startdate_edit)).toString();
-        String end = ((EditText)mRootView.findViewById(R.id.add_income_enddate_edit)).toString();
+        String start = ((EditText)mRootView.findViewById(R.id.add_income_startdate_edit)).getText().toString();
+        String end = ((EditText)mRootView.findViewById(R.id.add_income_enddate_edit)).getText().toString();
         try{
             Income income = new Income();
             income.setName(name);
