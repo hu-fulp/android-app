@@ -1,9 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-	<gradient 
-	android:type="linear"
-	android:startColor="#FFf99043" 
-	android:endColor="#FFec6d0d" 
-	android:angle="270"/>
-
-</shape>
-<!-- From: file:/Users/roystraub/Documents/android-app-fulp/app/src/main/res/drawable-hdpi/title_gradient.xml -->
