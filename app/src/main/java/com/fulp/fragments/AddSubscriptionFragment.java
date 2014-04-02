@@ -13,17 +13,28 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.fulp.R;
+import com.fulp.domain.Income;
+import com.fulp.domain.Subscription;
+import com.fulp.listeners.DateSelectionListener;
+import com.fulp.listeners.WebserviceListener;
+import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.income.CreateIncomeTask;
+import com.fulp.tasks.subscriptions.CreateSubscriptionTask;
+
+import java.util.List;
 
 /**
  * Created by roystraub on 02-04-14.
  */
-public class AddSubscriptionFragment extends Fragment implements OnDateSetListener, DateSelectionListener, AdapterView.OnItemSelectedListener {
+public class AddSubscriptionFragment extends Fragment implements OnDateSetListener, DateSelectionListener, AdapterView.OnItemSelectedListener, WebserviceListener {
     private View mRootView;
     private EditText mDateEdit;
     private String mSelectedCategory;
     private String mSelectedInterval;
+    private WebserviceListener webserviceListener;
 
     public AddSubscriptionFragment(){
         
@@ -35,6 +46,7 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
 
         getActivity().setTitle(R.string.add_subscription_title);
         setupView();
+        webserviceListener = this;
 
         //Save button
         Button save = (Button)mRootView.findViewById(R.id.add_subscription_save);
@@ -43,7 +55,16 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
                 // Perform action on click
                 boolean validInput = ValidateInput();
                 if(validInput){
-                    //Call webservice
+                    Subscription subscription = new Subscription();
+                    subscription.setName("test");
+                    subscription.setAmount(1);
+                    subscription.setStart("2014-01-01");
+                    subscription.setEnd("2015-01-01");
+                    subscription.setInterval("month");
+                    subscription.setCategory("internet");
+
+                    PostDataTask createSubscriptionTask = new CreateSubscriptionTask(webserviceListener, subscription);
+                    createSubscriptionTask.execute();
                 }
             }
         });
@@ -97,5 +118,15 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onComplete(List<?> data) {
+        Toast.makeText(getActivity(), data.get(0).toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailure(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 }

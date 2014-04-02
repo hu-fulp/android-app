@@ -2,6 +2,7 @@ package com.fulp.fragments;
 
 import com.fulp.R;
 import com.fulp.domain.Income;
+import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
 import com.fulp.tasks.PostDataTask;
 import com.fulp.tasks.income.CreateIncomeTask;
@@ -54,22 +55,23 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
             public void onClick(View v) {
                 // Perform action on click
                 boolean validInput = createIncome();
-                /*
-                if(validInput){
-<<<<<<< HEAD
-                    Map<String, String> parameters = new HashMap<String, String>();
 
+                if(validInput){
                     Income income = new Income();
                     income.setName("test");
+                    income.setAmount(1);
+                    income.setStart("2014-01-01");
+                    income.setEnd("2015-01-01");
+                    income.setInterval("month");
+                    income.setType("income");
 
-                    CreateIncomeTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
+                    PostDataTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
                     createIncomeTask.execute();
                 }
                 else {
                     //Show message
-=======
+
                     //Initialize object and call webservice
->>>>>>> FETCH_HEAD*/
                 }
             }
         });

@@ -44,9 +44,12 @@ public abstract class PostDataTask extends AsyncTask<String, Void, String> {
         if(this.resource == null) return null;
 
         try {
+            Log.d("test", url);
+
             DefaultHttpClient httpClient = new DefaultHttpClient();
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             HttpPost postMethod = new HttpPost(url);
+
 
             List<NameValuePair> params = new LinkedList<NameValuePair>();
 
@@ -65,7 +68,7 @@ public abstract class PostDataTask extends AsyncTask<String, Void, String> {
         }
         catch(IOException e){
             e.printStackTrace();
-            msg = e.getMessage();
+            msg = e.getMessage() + " url = " + url;
         }
 
         return null;
