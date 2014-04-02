@@ -32,34 +32,39 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
     	mRootView = inflater.inflate(R.layout.add_income, container, false);
         
         getActivity().setTitle(R.string.add_income_title);
-        //Setup spinners
-        //Incometype spinner
-        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
-		ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
-		typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		incomeTypeSpinner.setAdapter(typeAdapter);
-		incomeTypeSpinner.setOnItemSelectedListener(this);
-        //Interval spinner
-		Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
-		ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
-		intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		intervalSpinner.setAdapter(intervalAdapter);
-		intervalSpinner.setOnItemSelectedListener(this);
-		//Save button
+        setupView();
+
+        //Save button
         Button save = (Button)mRootView.findViewById(R.id.income_save_button);
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                boolean validInput = ValidateInput();
+                boolean validInput = createIncome();
                 if(validInput){
-                    //Call webservice
+                    //Initialize object and call webservice
                 }
             }
         });
         return mRootView;
     }
 
-    private boolean ValidateInput() {
+    private void setupView() {
+        //Setup spinners
+        //Incometype spinner
+        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
+        ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        incomeTypeSpinner.setAdapter(typeAdapter);
+        incomeTypeSpinner.setOnItemSelectedListener(this);
+        //Interval spinner
+        Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
+        ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
+        intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        intervalSpinner.setAdapter(intervalAdapter);
+        intervalSpinner.setOnItemSelectedListener(this);
+    }
+
+    private boolean createIncome() {
         return true;
     }
 

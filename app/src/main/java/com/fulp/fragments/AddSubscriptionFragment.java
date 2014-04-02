@@ -34,6 +34,23 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
         mRootView = inflater.inflate(R.layout.add_subscription, container, false);
 
         getActivity().setTitle(R.string.add_subscription_title);
+        setupView();
+
+        //Save button
+        Button save = (Button)mRootView.findViewById(R.id.add_subscription_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                boolean validInput = ValidateInput();
+                if(validInput){
+                    //Call webservice
+                }
+            }
+        });
+        return mRootView;
+    }
+
+    private void setupView() {
         //Setup spinners
         //Category spinner
         Spinner categorySpinner = (Spinner)mRootView.findViewById(R.id.add_subscription_category_spinner);
@@ -47,18 +64,6 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
         intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         intervalSpinner.setAdapter(intervalAdapter);
         intervalSpinner.setOnItemSelectedListener(this);
-        //Save button
-        Button save = (Button)mRootView.findViewById(R.id.add_subscription_save);
-        save.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                boolean validInput = ValidateInput();
-                if(validInput){
-                    //Call webservice
-                }
-            }
-        });
-        return mRootView;
     }
 
     private boolean ValidateInput() {
