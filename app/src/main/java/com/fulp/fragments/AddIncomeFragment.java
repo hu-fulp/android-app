@@ -17,9 +17,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener{
+public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, DateSelectionListener{
 	private String mSelectedInkomstenType;
-	private String mSelectedHerhaling;
+	private String mSelectedInterval;
 	private View mRootView;
 	private EditText mDateEdit;
 	
@@ -54,9 +54,6 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
                 if(validInput){
                     //Call webservice
                 }
-                else {
-                    //Show message
-                }
             }
         });
         return mRootView;
@@ -73,7 +70,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
     		this.mSelectedInkomstenType = parent.getItemAtPosition(position).toString();
     	}
     	else if(spinner.getId() == R.id.inkomsten_herhaling_spinner){
-    		this.mSelectedHerhaling = parent.getItemAtPosition(position).toString();
+    		this.mSelectedInterval = parent.getItemAtPosition(position).toString();
     	}
 	}
 
@@ -82,7 +79,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	public void selectDatum(View view){
 		mDateEdit = (EditText)view;
 		DialogFragment newFragment = new DatePickerFragment();

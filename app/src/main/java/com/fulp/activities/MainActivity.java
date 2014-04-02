@@ -3,8 +3,9 @@ package com.fulp.activities;
 import com.fulp.R;
 import com.fulp.fragments.AddIncomeFragment;
 import com.fulp.fragments.AddInsuranceFragment;
+import com.fulp.fragments.AddSubscriptionFragment;
 import com.fulp.fragments.DashboardFragment;
-
+import com.fulp.fragments.DateSelectionListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -32,10 +33,14 @@ public class MainActivity extends Activity implements OnDateSetListener{
     private String[] mMenuItems;
 	
     //Fragment
-    private AddIncomeFragment inkomenToevoegen;
-    private AddInsuranceFragment verzekeringToevoegen;
+    private AddIncomeFragment addIncome;
+    private AddInsuranceFragment addInsurance;
+    private AddSubscriptionFragment addSubscription;
     private DashboardFragment dashboard;
-    
+    //OnDateSetListeners
+    private DateSelectionListener dateSelectionListener;
+    private OnDateSetListener dateSetListener;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -123,15 +128,24 @@ public class MainActivity extends Activity implements OnDateSetListener{
         		fragmentManager.beginTransaction().replace(R.id.content_frame, dashboard).commit();
         		break;
         	case 1:
-        		//Inkomsten
-        		inkomenToevoegen = new AddIncomeFragment();
-        		fragmentManager.beginTransaction().replace(R.id.content_frame, inkomenToevoegen).commit();
+        		//Income
+        		addIncome = new AddIncomeFragment();
+                dateSetListener = addIncome;
+                dateSelectionListener = addIncome;
+        		fragmentManager.beginTransaction().replace(R.id.content_frame, addIncome).commit();
         		break;
         	case 2:
-        		//Verzekeringen
-        		verzekeringToevoegen = new AddInsuranceFragment();
-        		fragmentManager.beginTransaction().replace(R.id.content_frame, verzekeringToevoegen).commit();
+        		//Insurance
+        		addInsurance = new AddInsuranceFragment();
+        		fragmentManager.beginTransaction().replace(R.id.content_frame, addInsurance).commit();
         		break;
+            case 3:
+                //Subscription
+                addSubscription = new AddSubscriptionFragment();
+                dateSetListener = addSubscription;
+                dateSelectionListener = addSubscription;
+                fragmentManager.beginTransaction().replace(R.id.content_frame, addSubscription).commit();
+                break;
         	default:
         		dashboard = new DashboardFragment();
         		fragmentManager.beginTransaction().replace(R.id.content_frame, dashboard).commit();
@@ -147,11 +161,11 @@ public class MainActivity extends Activity implements OnDateSetListener{
     }
     
     public void selectDatum(View view){
-    	inkomenToevoegen.selectDatum(view);
+        dateSelectionListener.selectDatum(view);
     }
     
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-    	inkomenToevoegen.onDateSet(view, year, monthOfYear, dayOfMonth);
+    	dateSetListener.onDateSet(view, year, monthOfYear, dayOfMonth);
     }
     
     @Override

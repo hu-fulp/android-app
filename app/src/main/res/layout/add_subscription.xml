@@ -24,6 +24,7 @@
         android:layout_below="@+id/add_subscription_company_label"
         android:layout_marginTop="5dp"
         android:singleLine="true"
+        android:hint="@string/add_subscription_company"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -79,6 +80,7 @@
         android:id="@+id/add_subscription_amount"
         android:layout_below="@+id/add_subscription_amount_label"
         android:layout_marginTop="5dp"
+        android:hint="@string/add_subscription_amount"
         android:inputType="numberDecimal"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -91,7 +93,8 @@
         android:layout_below="@+id/add_subscription_amount"
         android:layout_marginTop="10dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="selectDatum" />
 
     <EditText
         android:layout_width="match_parent"
@@ -99,9 +102,12 @@
         android:id="@+id/add_subscription_startdate"
         android:layout_below="@+id/add_subscription_startdate_label"
         android:layout_marginTop="5dp"
+        android:hint="@string/add_subscription_startdate"
         android:inputType="none"
+        android:editable="false"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="selectDatum" />
 
     <TextView
         android:layout_width="match_parent"
@@ -120,8 +126,11 @@
         android:layout_below="@+id/add_subscription_enddate_label"
         android:layout_marginTop="5dp"
         android:inputType="none"
+        android:editable="false"
+        android:hint="@string/add_subscription_enddate"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="selectDatum"/>
 
     <Button
         android:layout_width="wrap_content"
