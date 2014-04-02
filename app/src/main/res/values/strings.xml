@@ -27,6 +27,13 @@
         <item>Kwartaal</item>
         <item>Jaarlijks</item>
     </string-array>
+
+    <string-array name="subscription_categories">
+        <item>Internet</item>
+        <item>Telefoon</item>
+        <item>Diversen</item>
+
+    </string-array>
     
     <string name="title_activity_main">Home</string>
     <string name="drawer_open">Toon navigatie</string>
@@ -36,7 +43,7 @@
     
     <string name="add_income_title">Inkomstenbron toevoegen</string>
     <string name="add_income_description_label">Omschrijving</string>
-    <string name="add_income_description">Voer een omschrijving in</string>
+    <string name="add_income_description">Bijv. salaris</string>
     <string name="add_income_amount_label">Bedrag</string>
     <string name="add_income_amount">Voer een bedrag in euro\'s in</string>
     <string name="add_income_incometype_label">Inkomstentype</string>
@@ -48,15 +55,27 @@
 	
     <string name="add_insurance_title">Verzekering toevoegen</string>
     <string name="add_insurance_insurer_label">Verzekeraar</string>
-    <string name="add_insurance_insurer">Voer de naam van de verzekeraar in</string>
+    <string name="add_insurance_insurer">Bijv. Ohra</string>
     <string name="add_insurance_productname_label">Productnaam</string>
-    <string name="add_insurance_productname">Voer de naam van het product in</string>
+    <string name="add_insurance_productname">Bijv. autoverzekering</string>
     <string name="add_insurance_insured_label">Verzekerde(n)</string>
-    <string name="add_insurance_insured">Voer de namen van de verzekerde(n) in</string>
+    <string name="add_insurance_insured">Bijv. Kees, Hans etc.</string>
     <string name="add_insurance_premium_label">Premie</string>
     <string name="add_insurance_premium">Voer de premie in euro\'s in</string>
     
     <string name="dashboard_title">Dashboard</string>
+
+    <string name="add_subscription_title">Abonnement toevoegen</string>
+    <string name="add_subscription_company_label">Bedrijf</string>
+    <string name="add_subscription_company">Bijv. KPN</string>
+    <string name="add_subscription_category_label">Categorie</string>
+    <string name="add_subscription_interval_label">Periodieke herhaling</string>
+    <string name="add_subscription_amount_label">Bedrag</string>
+    <string name="add_subscription_amount">Voer het bedrag in euro\'s in</string>
+    <string name="add_subscription_startdate_label">Startdatum</string>
+    <string name="add_subscription_startdate">Klik om een startdatum te selecteren</string>
+    <string name="add_subscription_enddate_label">Einddatum</string>
+    <string name="add_subscription_enddate">Klik om een einddatum te selecteren</string>
 
     <string name="button_save">Opslaan</string>
 </resources>
