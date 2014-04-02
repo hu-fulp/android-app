@@ -9,8 +9,7 @@ public class Income {
     private String start;
     private String end;
     private String interval;
-    private float amount;
-    private String income;
+    private double amount;
     private String type;
 
     public String getName() {
@@ -18,7 +17,11 @@ public class Income {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name.isEmpty()){
+            throw new IllegalArgumentException("Omschrijving mag niet leeg zijn");
+        }
+        else
+            this.name = name;
     }
 
     public String getStart() {
@@ -34,7 +37,10 @@ public class Income {
     }
 
     public void setEnd(String end) {
-        this.end = end;
+        if(this.start.isEmpty())
+            throw new IllegalArgumentException("Startdatum mag niet leeg zijn");
+        else
+            this.end = end;
     }
 
     public String getInterval() {
@@ -42,23 +48,21 @@ public class Income {
     }
 
     public void setInterval(String interval) {
-        this.interval = interval;
+        if(interval.isEmpty())
+            throw new IllegalArgumentException("Interval mag niet leeg zijn");
+        else
+            this.interval = interval;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public String getIncome() {
-        return income;
-    }
-
-    public void setIncome(String income) {
-        this.income = income;
+    public void setAmount(double amount) {
+        if(amount == 0.0)
+            throw new IllegalArgumentException("Bedrag moet een waarde hebben");
+        else
+            this.amount = amount;
     }
 
     public String getType() {
@@ -66,6 +70,9 @@ public class Income {
     }
 
     public void setType(String type) {
-        this.type = type;
+        if(type.isEmpty())
+            throw new IllegalArgumentException("Type mag niet leeg zijn");
+        else
+            this.type = type;
     }
 }

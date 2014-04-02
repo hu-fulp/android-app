@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_subscription_company_label"
+        android:text="@string/add_subscription_name_label"
         android:id="@+id/add_subscription_company_label"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -24,7 +24,7 @@
         android:layout_below="@+id/add_subscription_company_label"
         android:layout_marginTop="5dp"
         android:singleLine="true"
-        android:hint="@string/add_subscription_company"
+        android:hint="@string/add_subscription_name"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -66,8 +66,8 @@
     <string name="dashboard_title">Dashboard</string>
 
     <string name="add_subscription_title">Abonnement toevoegen</string>
-    <string name="add_subscription_company_label">Bedrijf</string>
-    <string name="add_subscription_company">Bijv. KPN</string>
+    <string name="add_subscription_name_label">Naam</string>
+    <string name="add_subscription_name">Bijv. KPN alles in één</string>
     <string name="add_subscription_category_label">Categorie</string>
     <string name="add_subscription_interval_label">Periodieke herhaling</string>
     <string name="add_subscription_amount_label">Bedrag</string>
