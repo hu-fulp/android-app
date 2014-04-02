@@ -10,7 +10,7 @@
         android:id="@+id/inkomsten_omschrijving_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/inkomsten_toevoegen_omschrijving_label" />
+        android:text="@string/add_income_description_label" />
     
     <EditText
         android:id="@+id/inkomsten_omschrijving"
@@ -21,7 +21,7 @@
         android:layout_marginTop="5dp"
         android:singleLine="true"
         android:inputType="text"
-        android:hint="@string/inkomsten_toevoegen_omschrijving"
+        android:hint="@string/add_income_description"
         android:nextFocusDown="@+id/inkomsten_bedrag">
         <requestFocus />
     </EditText>
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inkomsten_omschrijving"
         android:layout_marginTop="10dp"
-        android:text="@string/inkomsten_toevoegen_bedrag_label" />
+        android:text="@string/add_income_amount_label" />
     
     <EditText
         android:id="@+id/inkomsten_bedrag"
@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:inputType="numberDecimal"
-        android:hint="@string/inkomsten_toevoegen_bedrag" />
+        android:hint="@string/add_income_amount" />
 	
     <TextView
         android:id="@+id/inkomsten_inkomsttype_label"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inkomsten_bedrag"
         android:layout_marginTop="10dp"
-        android:text="@string/inkomsten_toevoegen_inkomsttype_label" />
+        android:text="@string/add_income_incometype_label" />
     
     <Spinner
         android:id="@+id/inkomsten_type_spinner"
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inkomsten_type_spinner"
         android:layout_marginTop="10dp"
-        android:text="@string/inkomsten_toevoegen_herhaling_label" />
+        android:text="@string/add_income_interval_label" />
 	
     <Spinner
         android:id="@+id/inkomsten_herhaling_spinner"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inkomsten_herhaling_spinner"
         android:layout_marginTop="10dp"
-        android:text="@string/inkomsten_startdatum_label" />
+        android:text="@string/add_income_startdate_label" />
     
     <EditText
         android:id="@+id/inkomsten_startdatum_edit"
@@ -93,7 +93,7 @@
         android:layout_marginTop="5dp"
         android:inputType="none"
         android:editable="false"
-        android:hint="@string/inkomsten_startdatum"
+        android:hint="@string/add_income_startdate"
         android:onClick="selectDatum" />
     
     <TextView
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inkomsten_startdatum_edit"
         android:layout_marginTop="10dp"
-        android:text="@string/inkomsten_einddatum_label" />
+        android:text="@string/add_income_enddate_label" />
     
     <EditText
         android:id="@+id/inkomsten_einddatum_edit"
@@ -113,7 +113,16 @@
         android:layout_marginTop="5dp"
         android:inputType="none"
         android:editable="false"
-        android:hint="@string/inkomsten_einddatum"
+        android:hint="@string/add_income_enddate"
         android:onClick="selectDatum" />
-    
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_save"
+        android:id="@+id/income_save_button"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/inkomsten_einddatum_edit"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

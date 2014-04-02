@@ -1,60 +1,71 @@
 package com.fulp.fragments;
 
-import java.util.Locale;
-
 import com.fulp.R;
 
-import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-public class InkomenToevoegenFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener{
+public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener{
 	private String mSelectedInkomstenType;
 	private String mSelectedHerhaling;
 	private View mRootView;
 	private EditText mDateEdit;
 	
-	public InkomenToevoegenFragment() {
+	public AddIncomeFragment() {
         // Empty constructor required for fragment subclasses
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	mRootView = inflater.inflate(R.layout.inkomen_toevoegen, container, false);
+    	mRootView = inflater.inflate(R.layout.add_income, container, false);
         
-        getActivity().setTitle(R.string.inkomen_toevoegen_title);
+        getActivity().setTitle(R.string.add_income_title);
         //Setup spinners
-        //Inkomstentype spinner
-        Spinner inkomstenTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
-		ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.inkomsten_types, android.R.layout.simple_spinner_item);
+        //Incometype spinner
+        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
+		ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
 		typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		inkomstenTypeSpinner.setAdapter(typeAdapter);
-		inkomstenTypeSpinner.setOnItemSelectedListener(this);
-        //Herhaling spinner
-		Spinner herhalingSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
-		ArrayAdapter<CharSequence> herhalingAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.periodieke_herhaling, android.R.layout.simple_spinner_item);
-		herhalingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		herhalingSpinner.setAdapter(herhalingAdapter);
-		herhalingSpinner.setOnItemSelectedListener(this);
-		
+		incomeTypeSpinner.setAdapter(typeAdapter);
+		incomeTypeSpinner.setOnItemSelectedListener(this);
+        //Interval spinner
+		Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
+		ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
+		intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		intervalSpinner.setAdapter(intervalAdapter);
+		intervalSpinner.setOnItemSelectedListener(this);
+		//Save button
+        Button save = (Button)mRootView.findViewById(R.id.income_save_button);
+        save.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                boolean validInput = ValidateInput();
+                if(validInput){
+                    //Call webservice
+                }
+                else {
+                    //Show message
+                }
+            }
+        });
         return mRootView;
     }
-    
+
+    private boolean ValidateInput() {
+        return true;
+    }
+
     @Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
     	Spinner spinner = (Spinner) parent;
@@ -81,6 +92,6 @@ public class InkomenToevoegenFragment extends Fragment implements OnItemSelected
 	@Override
 	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 		monthOfYear++;
-		mDateEdit.setText("" + monthOfYear + "-" + dayOfMonth + "-" + year);
+		mDateEdit.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year);
 	}
 }

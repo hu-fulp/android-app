@@ -13,13 +13,13 @@
         <item>Instellingen</item>
     </string-array>
     
-	<string-array name="inkomsten_types">
+	<string-array name="income_types">
         <item>Toeslagen</item>
         <item>Inkomen</item>
         <item>Uitkering</item>
     </string-array>
     
-	<string-array name="periodieke_herhaling">
+	<string-array name="intervals">
 	    <item>Geen</item>
 	    <item>Wekelijks</item>
 	    <item>Twee wekelijks</item>
@@ -34,20 +34,29 @@
     <string name="action_websearch">Web zoekopdracht</string>
     <string name="app_not_available">App niet beschikbaar</string>
     
-    <string name="inkomen_toevoegen_title">Inkomstenbron toevoegen</string>
-    <string name="inkomsten_toevoegen_omschrijving_label">Omschrijving</string>
-    <string name="inkomsten_toevoegen_omschrijving">Voer een omschrijving in</string>
-    <string name="inkomsten_toevoegen_bedrag_label">Bedrag</string>
-    <string name="inkomsten_toevoegen_bedrag">Voer een bedrag in euro\'s in</string>
-    <string name="inkomsten_toevoegen_inkomsttype_label">Inkomstentype</string>
-    <string name="inkomsten_toevoegen_herhaling_label">Periodieke herhaling</string>
-    <string name="inkomsten_startdatum_label">Startdatum</string>
-    <string name="inkomsten_startdatum">Klik om een startdatum te selecteren</string>
-    <string name="inkomsten_einddatum_label">Einddatum</string>
-    <string name="inkomsten_einddatum">Klik om een einddatum te selecteren</string>
+    <string name="add_income_title">Inkomstenbron toevoegen</string>
+    <string name="add_income_description_label">Omschrijving</string>
+    <string name="add_income_description">Voer een omschrijving in</string>
+    <string name="add_income_amount_label">Bedrag</string>
+    <string name="add_income_amount">Voer een bedrag in euro\'s in</string>
+    <string name="add_income_incometype_label">Inkomstentype</string>
+    <string name="add_income_interval_label">Periodieke herhaling</string>
+    <string name="add_income_startdate_label">Startdatum</string>
+    <string name="add_income_startdate">Klik om een startdatum te selecteren</string>
+    <string name="add_income_enddate_label">Einddatum</string>
+    <string name="add_income_enddate">Klik om een einddatum te selecteren</string>
 	
-    <string name="verzekering_toevoegen_title">Verzekering toevoegen</string>
+    <string name="add_insurance_title">Verzekering toevoegen</string>
+    <string name="add_insurance_insurer_label">Verzekeraar</string>
+    <string name="add_insurance_insurer">Voer de naam van de verzekeraar in</string>
+    <string name="add_insurance_productname_label">Productnaam</string>
+    <string name="add_insurance_productname">Voer de naam van het product in</string>
+    <string name="add_insurance_insured_label">Verzekerde(n)</string>
+    <string name="add_insurance_insured">Voer de namen van de verzekerde(n) in</string>
+    <string name="add_insurance_premium_label">Premie</string>
+    <string name="add_insurance_premium">Voer de premie in euro\'s in</string>
     
     <string name="dashboard_title">Dashboard</string>
-    
+
+    <string name="button_save">Opslaan</string>
 </resources>
