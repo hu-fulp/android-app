@@ -1,6 +1,10 @@
 package com.fulp.fragments;
 
 import com.fulp.R;
+import com.fulp.domain.Income;
+import com.fulp.listeners.WebserviceListener;
+import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.income.CreateIncomeTask;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
@@ -16,12 +20,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener{
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, WebserviceListener {
 	private String mSelectedInkomstenType;
 	private String mSelectedHerhaling;
 	private View mRootView;
 	private EditText mDateEdit;
+    private WebserviceListener webserviceListener;
 	
 	public AddIncomeFragment() {
         // Empty constructor required for fragment subclasses
@@ -47,12 +57,21 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 		intervalSpinner.setOnItemSelectedListener(this);
 		//Save button
         Button save = (Button)mRootView.findViewById(R.id.income_save_button);
+        webserviceListener = this;
+
+
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
                 boolean validInput = ValidateInput();
                 if(validInput){
-                    //Call webservice
+                    Map<String, String> parameters = new HashMap<String, String>();
+
+                    Income income = new Income();
+                    income.setName("test");
+
+                    CreateIncomeTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
+                    createIncomeTask.execute();
                 }
                 else {
                     //Show message
@@ -94,4 +113,14 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 		monthOfYear++;
 		mDateEdit.setText("" + dayOfMonth + "-" + monthOfYear + "-" + year);
 	}
+
+    @Override
+    public void onComplete(List<?> data) {
+        Toast.makeText(getActivity(), data.get(0).toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailure(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
 }
