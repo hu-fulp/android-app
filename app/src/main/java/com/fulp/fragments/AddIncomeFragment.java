@@ -26,9 +26,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, WebserviceListener {
+public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, WebserviceListener, DateSelectionListener {
+
 	private String mSelectedInkomstenType;
-	private String mSelectedHerhaling;
+	private String mSelectedInterval;
 	private View mRootView;
 	private EditText mDateEdit;
     private WebserviceListener webserviceListener;
@@ -42,20 +43,9 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
     	mRootView = inflater.inflate(R.layout.add_income, container, false);
         
         getActivity().setTitle(R.string.add_income_title);
-        //Setup spinners
-        //Incometype spinner
-        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
-		ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
-		typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		incomeTypeSpinner.setAdapter(typeAdapter);
-		incomeTypeSpinner.setOnItemSelectedListener(this);
-        //Interval spinner
-		Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
-		ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
-		intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		intervalSpinner.setAdapter(intervalAdapter);
-		intervalSpinner.setOnItemSelectedListener(this);
-		//Save button
+        setupView();
+
+        //Save button
         Button save = (Button)mRootView.findViewById(R.id.income_save_button);
         webserviceListener = this;
 
@@ -63,8 +53,10 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                boolean validInput = ValidateInput();
+                boolean validInput = createIncome();
+                /*
                 if(validInput){
+<<<<<<< HEAD
                     Map<String, String> parameters = new HashMap<String, String>();
 
                     Income income = new Income();
@@ -75,13 +67,32 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
                 }
                 else {
                     //Show message
+=======
+                    //Initialize object and call webservice
+>>>>>>> FETCH_HEAD*/
                 }
             }
         });
         return mRootView;
     }
 
-    private boolean ValidateInput() {
+    private void setupView() {
+        //Setup spinners
+        //Incometype spinner
+        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
+        ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        incomeTypeSpinner.setAdapter(typeAdapter);
+        incomeTypeSpinner.setOnItemSelectedListener(this);
+        //Interval spinner
+        Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
+        ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
+        intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        intervalSpinner.setAdapter(intervalAdapter);
+        intervalSpinner.setOnItemSelectedListener(this);
+    }
+
+    private boolean createIncome() {
         return true;
     }
 
@@ -92,7 +103,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
     		this.mSelectedInkomstenType = parent.getItemAtPosition(position).toString();
     	}
     	else if(spinner.getId() == R.id.inkomsten_herhaling_spinner){
-    		this.mSelectedHerhaling = parent.getItemAtPosition(position).toString();
+    		this.mSelectedInterval = parent.getItemAtPosition(position).toString();
     	}
 	}
 
@@ -101,7 +112,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	public void selectDatum(View view){
 		mDateEdit = (EditText)view;
 		DialogFragment newFragment = new DatePickerFragment();
