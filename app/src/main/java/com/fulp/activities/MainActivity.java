@@ -4,7 +4,6 @@ import com.fulp.R;
 import com.fulp.fragments.AddIncomeFragment;
 import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.DashboardFragment;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -20,8 +19,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnDateSetListener{
+import java.util.List;
+
+public class MainActivity extends Activity implements OnDateSetListener {
 	
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -174,7 +176,8 @@ public class MainActivity extends Activity implements OnDateSetListener{
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-    
+
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
