@@ -7,88 +7,88 @@
    	android:paddingTop="20dp">
 	
     <TextView
-        android:id="@+id/inkomsten_omschrijving_label"
+        android:id="@+id/add_income_description_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_income_description_label" />
     
     <EditText
-        android:id="@+id/inkomsten_omschrijving"
+        android:id="@+id/add_income_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_omschrijving_label"
+        android:layout_below="@+id/add_income_description_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:singleLine="true"
         android:inputType="text"
         android:hint="@string/add_income_description"
-        android:nextFocusDown="@+id/inkomsten_bedrag">
+        android:nextFocusDown="@+id/add_income_amount">
         <requestFocus />
     </EditText>
 	
     <TextView
-        android:id="@+id/inkomsten_bedrag_label"
+        android:id="@+id/add_income_amount_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_omschrijving"
+        android:layout_below="@+id/add_income_description"
         android:layout_marginTop="10dp"
         android:text="@string/add_income_amount_label" />
     
     <EditText
-        android:id="@+id/inkomsten_bedrag"
+        android:id="@+id/add_income_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_bedrag_label"
+        android:layout_below="@+id/add_income_amount_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:inputType="numberDecimal"
         android:hint="@string/add_income_amount" />
 	
     <TextView
-        android:id="@+id/inkomsten_inkomsttype_label"
+        android:id="@+id/add_income_type_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_bedrag"
+        android:layout_below="@+id/add_income_amount"
         android:layout_marginTop="10dp"
         android:text="@string/add_income_incometype_label" />
     
     <Spinner
-        android:id="@+id/inkomsten_type_spinner"
+        android:id="@+id/add_income_type_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_inkomsttype_label"
+        android:layout_below="@+id/add_income_type_label"
         android:layout_marginTop="5dp"
         />
 
     <TextView
-        android:id="@+id/inkomsten_herhaling_label"
+        android:id="@+id/add_income_interval_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_type_spinner"
+        android:layout_below="@+id/add_income_type_spinner"
         android:layout_marginTop="10dp"
         android:text="@string/add_income_interval_label" />
 	
     <Spinner
-        android:id="@+id/inkomsten_herhaling_spinner"
+        android:id="@+id/add_income_interval_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_herhaling_label"
+        android:layout_below="@+id/add_income_interval_label"
         android:layout_marginTop="5dp"
         />
     
     <TextView
-        android:id="@+id/inkomsten_startdatum_label"
+        android:id="@+id/add_income_startdate_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_herhaling_spinner"
+        android:layout_below="@+id/add_income_interval_spinner"
         android:layout_marginTop="10dp"
         android:text="@string/add_income_startdate_label" />
     
     <EditText
-        android:id="@+id/inkomsten_startdatum_edit"
+        android:id="@+id/add_income_startdate_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_startdatum_label"
+        android:layout_below="@+id/add_income_startdate_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:inputType="none"
@@ -97,18 +97,18 @@
         android:onClick="selectDatum" />
     
     <TextView
-        android:id="@+id/inkomsten_einddatum_label"
+        android:id="@+id/add_income_enddate_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_startdatum_edit"
+        android:layout_below="@+id/add_income_startdate_edit"
         android:layout_marginTop="10dp"
         android:text="@string/add_income_enddate_label" />
     
     <EditText
-        android:id="@+id/inkomsten_einddatum_edit"
+        android:id="@+id/add_income_enddate_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inkomsten_einddatum_label"
+        android:layout_below="@+id/add_income_enddate_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:inputType="none"
@@ -122,7 +122,7 @@
         android:text="@string/button_save"
         android:id="@+id/income_save_button"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/inkomsten_einddatum_edit"
+        android:layout_below="@+id/add_income_enddate_edit"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

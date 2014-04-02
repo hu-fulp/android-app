@@ -4,8 +4,6 @@ import com.fulp.R;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
-import com.fulp.tasks.income.CreateIncomeTask;
 
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
@@ -23,9 +21,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, WebserviceListener, DateSelectionListener {
 
@@ -54,24 +50,10 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                boolean validInput = createIncome();
 
-                if(validInput){
-                    Income income = new Income();
-                    income.setName("test");
-                    income.setAmount(1);
-                    income.setStart("2014-01-01");
-                    income.setEnd("2015-01-01");
-                    income.setInterval("month");
-                    income.setType("income");
-
+                    Income income = createIncome();
                     PostDataTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
                     createIncomeTask.execute();
-                }
-                else {
-                    //Show message
-
-                    //Initialize object and call webservice
                 }
             }
         });
@@ -81,30 +63,57 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
     private void setupView() {
         //Setup spinners
         //Incometype spinner
-        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_type_spinner);
+        Spinner incomeTypeSpinner = (Spinner)mRootView.findViewById(R.id.add_income_type_spinner);
         ArrayAdapter<CharSequence> typeAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.income_types, android.R.layout.simple_spinner_item);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         incomeTypeSpinner.setAdapter(typeAdapter);
         incomeTypeSpinner.setOnItemSelectedListener(this);
         //Interval spinner
-        Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.inkomsten_herhaling_spinner);
+        Spinner intervalSpinner = (Spinner)mRootView.findViewById(R.id.add_income_interval_spinner);
         ArrayAdapter<CharSequence> intervalAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.intervals, android.R.layout.simple_spinner_item);
         intervalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         intervalSpinner.setAdapter(intervalAdapter);
         intervalSpinner.setOnItemSelectedListener(this);
     }
 
-    private boolean createIncome() {
-        return true;
+    private Income createIncome() {
+        String name = ((EditText)mRootView.findViewById(R.id.add_income_description)).getText().toString();
+        String amountText = ((EditText) mRootView.findViewById(R.id.add_income_amount)).getText().toString();
+        Double amount;
+        if(!amountText.equals("")){
+            amount = Double.parseDouble(amountText);
+        }
+        else{
+            amount = 0.0;
+        }
+        String type = ((Spinner)mRootView.findViewById(R.id.add_income_type_spinner)).getSelectedItem().toString();
+        String interval = ((Spinner)mRootView.findViewById(R.id.add_income_interval_spinner)).getSelectedItem().toString();
+        String start = ((EditText)mRootView.findViewById(R.id.add_income_startdate_edit)).getText().toString();
+        String end = ((EditText)mRootView.findViewById(R.id.add_income_enddate_edit)).getText().toString();
+        try{
+            Income income = new Income();
+            income.setName(name);
+            income.setAmount(amount);
+            income.setType(type);
+            income.setInterval(interval);
+            income.setStart(start);
+            income.setEnd(end);
+            return income;
+        }
+        catch(IllegalArgumentException iae){
+            Toast toast = Toast.makeText(getActivity(), iae.getMessage(), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        return null;
     }
 
     @Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
     	Spinner spinner = (Spinner) parent;
-    	if(spinner.getId() == R.id.inkomsten_type_spinner){
+    	if(spinner.getId() == R.id.add_income_type_spinner){
     		this.mSelectedInkomstenType = parent.getItemAtPosition(position).toString();
     	}
-    	else if(spinner.getId() == R.id.inkomsten_herhaling_spinner){
+    	else if(spinner.getId() == R.id.add_income_interval_spinner){
     		this.mSelectedInterval = parent.getItemAtPosition(position).toString();
     	}
 	}
