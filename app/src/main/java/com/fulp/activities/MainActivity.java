@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.fulp.R;
 import com.fulp.domain.User;
@@ -43,6 +44,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
     //OnDateSetListeners
     private DateSelectionListener dateSelectionListener;
     private OnDateSetListener dateSetListener;
+    private RelativeLayout mDrawerRelative;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class MainActivity extends Activity implements OnDateSetListener {
 		mMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerRelative = (RelativeLayout) findViewById(R.id.slide_layout);
+
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
@@ -105,7 +109,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerRelative);
         
         return super.onPrepareOptionsMenu(menu);
     }
@@ -173,7 +177,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(mMenuItems[position]);
-        mDrawerLayout.closeDrawer(mDrawerList); 
+        mDrawerLayout.closeDrawer(mDrawerRelative);
     }
     
     public void selectDatum(View view){
