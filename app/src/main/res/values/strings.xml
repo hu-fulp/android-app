@@ -31,6 +31,13 @@
         <item>Diversen</item>
     </string-array>
 
+    <string-array name="insurance_categories">
+        <item>Autoverzekering</item>
+        <item>Zorgverzekering</item>
+        <item>Levensverzekering</item>
+        <item>Inboedelverzekering</item>
+    </string-array>
+
     <string name="title_activity_main">Home</string>
     <string name="drawer_open">Toon navigatie</string>
     <string name="drawer_close">Sluit navigatie</string>
@@ -50,12 +57,14 @@
     <string name="add_insurance_title">Verzekering toevoegen</string>
     <string name="add_insurance_insurer_label">Verzekeraar</string>
     <string name="add_insurance_insurer">Bijv. Ohra</string>
-    <string name="add_insurance_productname_label">Productnaam</string>
-    <string name="add_insurance_productname">Bijv. autoverzekering</string>
-    <string name="add_insurance_insured_label">Verzekerde(n)</string>
-    <string name="add_insurance_insured">Bijv. Kees, Hans etc.</string>
+    <string name="add_insurance_category_label">Verzekeringstype</string>
+    <string name="add_insurance_interval_label">Periodieke herhaling</string>
     <string name="add_insurance_premium_label">Premie</string>
     <string name="add_insurance_premium">Voer de premie in euro\'s in</string>
+    <string name="add_insurance_startdate_label">Startdatum</string>
+    <string name="add_insurance_startdate">Klik om een startdatum te selecteren</string>
+    <string name="add_insurance_enddate_label">Einddatum</string>
+    <string name="add_insurance_enddate">Klik om een einddatum te selecteren</string>
     <string name="dashboard_title">Dashboard</string>
     <string name="add_subscription_title">Abonnement toevoegen</string>
     <string name="add_subscription_name_label">Naam</string>
