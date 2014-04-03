@@ -1,17 +1,10 @@
 package com.fulp.activities;
 
-import com.fulp.R;
-import com.fulp.fragments.AddIncomeFragment;
-import com.fulp.fragments.AddInsuranceFragment;
-import com.fulp.fragments.AddSubscriptionFragment;
-import com.fulp.fragments.DashboardFragment;
-import com.fulp.listeners.DateSelectionListener;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,9 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.List;
+import com.fulp.R;
+import com.fulp.fragments.AddIncomeFragment;
+import com.fulp.fragments.AddInsuranceFragment;
+import com.fulp.fragments.AddSubscriptionFragment;
+import com.fulp.fragments.DashboardFragment;
+import com.fulp.listeners.DateSelectionListener;
 
 public class MainActivity extends Activity implements OnDateSetListener {
 	
@@ -141,6 +138,8 @@ public class MainActivity extends Activity implements OnDateSetListener {
         	case 2:
         		//Insurance
         		addInsurance = new AddInsuranceFragment();
+                dateSetListener = addInsurance;
+                dateSelectionListener = addInsurance;
         		fragmentManager.beginTransaction().replace(R.id.content_frame, addInsurance).commit();
         		break;
             case 3:
