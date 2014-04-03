@@ -3,6 +3,7 @@ package com.fulp.activities;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 
 import com.fulp.R;
+import com.fulp.domain.User;
 import com.fulp.fragments.AddIncomeFragment;
 import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.AddSubscriptionFragment;
@@ -62,7 +64,12 @@ public class MainActivity extends Activity implements OnDateSetListener {
         getActionBar().setIcon(R.drawable.logo_small);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        
+
+
+        Intent i = getIntent();
+        User user = (User)i.getSerializableExtra("user");
+
+
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -116,6 +123,12 @@ public class MainActivity extends Activity implements OnDateSetListener {
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();//go back to the previous Activity
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
     
     private void selectItem(int position) {

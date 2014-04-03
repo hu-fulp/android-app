@@ -4,7 +4,7 @@ import com.fulp.R;
 import com.fulp.domain.Insurance;
 import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.insurance.CreateInsuranceTask;
 
 import android.app.DatePickerDialog;
@@ -48,7 +48,7 @@ public class AddInsuranceFragment extends Fragment implements AdapterView.OnItem
                 // Perform action on click
                 Insurance insurance = createInsurance();
                 if(insurance != null){
-                    PostDataTask createInsuranceTask = new CreateInsuranceTask(webserviceListener, insurance);
+                    WebserviceRequestTask createInsuranceTask = new CreateInsuranceTask(webserviceListener, insurance);
                     createInsuranceTask.execute();
                 }
             }

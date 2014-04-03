@@ -19,7 +19,6 @@ public class User implements Serializable {
     private int id;
     private String token;
 
-
     public User() {
         this.accounts = new ArrayList<Account>();
         this.setAndroidId(Build.MODEL);

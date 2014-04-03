@@ -1,6 +1,8 @@
 package com.fulp.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -28,6 +30,7 @@ public class LoginActivity extends Activity implements WebserviceListener{
 
     private WebserviceListener listener;
     private User user;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class LoginActivity extends Activity implements WebserviceListener{
 
                 WebserviceRequestTask userLoginTask = new UserLoginTask(listener, user);
                 userLoginTask.execute();
+
+                pDialog = ProgressDialog.show((Context) listener, "", "Inloggen...");
             }
         });
 
@@ -73,15 +78,22 @@ public class LoginActivity extends Activity implements WebserviceListener{
 
     @Override
     public void onComplete(List<?> data) {
-        Toast.makeText(this, user.getToken(), Toast.LENGTH_LONG).show();
+        if(pDialog != null)  pDialog.dismiss();
 
+        Toast.makeText(this, "Welkom..", Toast.LENGTH_LONG).show();
+        Intent i = new Intent(this, MainActivity.class);
+        i.putExtra("user", user);
+        startActivity(i);
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("user", (Serializable) user);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
     @Override
     public void onFailure(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        if(pDialog != null)  pDialog.dismiss();
+        Toast.makeText(this, "Inloggen niet gelukt", Toast.LENGTH_LONG).show();
     }
+
+
+
 }
