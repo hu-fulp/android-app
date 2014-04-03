@@ -16,16 +16,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.fulp.R;
-import com.fulp.domain.Income;
 import com.fulp.domain.Subscription;
 import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
-import com.fulp.tasks.income.CreateIncomeTask;
+import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.subscriptions.CreateSubscriptionTask;
 
 import java.util.List;
-import com.fulp.listeners.DateSelectionListener;
 
 
 /**
@@ -57,7 +54,7 @@ public class AddSubscriptionFragment extends Fragment implements OnDateSetListen
                 // Perform action on click
                 Subscription subscription = createSubscription();
                 if(subscription != null){
-                    PostDataTask createSubscriptionTask = new CreateSubscriptionTask(webserviceListener, subscription);
+                    WebserviceRequestTask createSubscriptionTask = new CreateSubscriptionTask(webserviceListener, subscription);
                     createSubscriptionTask.execute();
                 }
             }

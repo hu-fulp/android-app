@@ -2,25 +2,24 @@ package com.fulp.tasks.income;
 
 import com.fulp.domain.Income;
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.WebserviceRequestTask;
 
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by royfokker on 02-04-14.
  */
 
-public class CreateIncomeTask extends PostDataTask {
+public class CreateIncomeTask extends WebserviceRequestTask {
 
     private final WebserviceListener listener;
 
     public CreateIncomeTask(WebserviceListener listener, Income income) {
+        super("Income/create");
         this.listener = listener;
 
         parameters.put("name", income.getName());
@@ -30,7 +29,7 @@ public class CreateIncomeTask extends PostDataTask {
         parameters.put("amount", String.valueOf(income.getAmount()));
         parameters.put("type", income.getType());
 
-        this.resource = "Income/create";
+
     }
 
     @Override

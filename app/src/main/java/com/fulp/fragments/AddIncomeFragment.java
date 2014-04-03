@@ -4,7 +4,7 @@ import com.fulp.R;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.income.CreateIncomeTask;
 
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -54,7 +54,7 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
                 // Perform action on click
                 Income income = createIncome();
                 if(income != null){
-                    PostDataTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
+                    WebserviceRequestTask createIncomeTask = new CreateIncomeTask(webserviceListener, income);
                     createIncomeTask.execute();
                 }
             }
