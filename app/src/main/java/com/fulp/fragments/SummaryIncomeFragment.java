@@ -1,10 +1,8 @@
 package com.fulp.fragments;
 
-import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.fulp.R;
-import com.fulp.domain.Income;
-import com.fulp.listeners.DateSelectionListener;
-import com.fulp.tasks.WebserviceRequestTask;
-import com.fulp.tasks.income.CreateIncomeTask;
 
 public class SummaryIncomeFragment extends Fragment {
     private View mRootView;

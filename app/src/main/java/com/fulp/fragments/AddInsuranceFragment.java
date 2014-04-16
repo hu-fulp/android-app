@@ -1,41 +1,37 @@
 package com.fulp.fragments;
 
 import com.fulp.R;
-import com.fulp.listeners.DateSelectionListener;
+import com.fulp.listeners.DateClickListener;
 
-import android.app.DatePickerDialog.OnDateSetListener;
 import com.fulp.domain.Insurance;
-import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
 import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.insurance.CreateInsuranceTask;
 
-import android.app.DatePickerDialog;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.DatePicker;
 
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
 
-public class AddInsuranceFragment extends Fragment implements AdapterView.OnItemSelectedListener, WebserviceListener, DatePickerDialog.OnDateSetListener, DateSelectionListener {
+public class AddInsuranceFragment extends Fragment implements AdapterView.OnItemSelectedListener, WebserviceListener  {
 
     private View mRootView;
     private String mSelectedInsuranceType;
     private WebserviceListener webserviceListener;
-    private EditText mDateEdit;
+    private EditText mStartDateEdit;
+    private EditText mEndDateEdit;
+    private DateClickListener startDateClickListener;
+    private DateClickListener endDateClickListener;
     private String mSelectedInterval;
 
     @Override
@@ -49,6 +45,12 @@ public class AddInsuranceFragment extends Fragment implements AdapterView.OnItem
         Button save = (Button)mRootView.findViewById(R.id.insurance_save_button);
         webserviceListener = this;
 
+        mStartDateEdit = (EditText)mRootView.findViewById(R.id.add_insurance_startdate_edit);
+        startDateClickListener = new DateClickListener(getActivity(), this, mStartDateEdit);
+        mStartDateEdit.setOnClickListener(startDateClickListener);
+        mEndDateEdit = (EditText)mRootView.findViewById(R.id.add_insurance_enddate_edit);
+        endDateClickListener = new DateClickListener(getActivity(), this, mEndDateEdit);
+        mEndDateEdit.setOnClickListener(endDateClickListener);
 
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -110,19 +112,6 @@ public class AddInsuranceFragment extends Fragment implements AdapterView.OnItem
         intervalSpinner.setAdapter(intervalAdapter);
         intervalSpinner.setOnItemSelectedListener(this);
     }
-
-    public void selectDatum(View view){
-        mDateEdit = (EditText)view;
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
-
-    @Override
-    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        monthOfYear++;
-        mDateEdit.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth);
-    }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

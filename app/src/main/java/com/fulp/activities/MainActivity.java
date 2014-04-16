@@ -8,15 +8,12 @@ import com.fulp.fragments.DashboardFragment;
 import com.fulp.fragments.SummaryIncomeFragment;
 import com.fulp.fragments.SummaryInsuranceFragment;
 import com.fulp.fragments.SummarySubscriptionFragment;
-import com.fulp.listeners.DateSelectionListener;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,19 +22,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.fulp.R;
 import com.fulp.domain.User;
-import com.fulp.fragments.AddIncomeFragment;
-import com.fulp.fragments.AddInsuranceFragment;
-import com.fulp.fragments.AddSubscriptionFragment;
-import com.fulp.fragments.DashboardFragment;
-import com.fulp.listeners.DateSelectionListener;
 
-public class MainActivity extends Activity implements OnDateSetListener {
+public class MainActivity extends Activity {
 	
 	private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -56,9 +46,6 @@ public class MainActivity extends Activity implements OnDateSetListener {
     private SummaryInsuranceFragment summaryInsurance;
     private SummarySubscriptionFragment summarySubscription;
 
-    //OnDateSetListeners
-    private DateSelectionListener dateSelectionListener;
-    private OnDateSetListener dateSetListener;
     private RelativeLayout mDrawerRelative;
 
 	@Override
@@ -208,14 +195,6 @@ public class MainActivity extends Activity implements OnDateSetListener {
         mDrawerList.setItemChecked(position, true);
         setTitle(mMenuItems[position]);
         mDrawerLayout.closeDrawer(mDrawerRelative);
-    }
-    
-    public void selectDatum(View view){
-        dateSelectionListener.selectDatum(view);
-    }
-    
-    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-    	dateSetListener.onDateSet(view, year, monthOfYear, dayOfMonth);
     }
     
     @Override
