@@ -1,6 +1,7 @@
 package com.fulp.activities;
 
 import com.fulp.R;
+import com.fulp.domain.Account;
 import com.fulp.fragments.AddIncomeFragment;
 import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.AddSubscriptionFragment;
@@ -46,6 +47,8 @@ public class MainActivity extends Activity implements OnDateSetListener {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mMenuItems;
+
+    private User user;
 	
     //Fragment
     private AddIncomeFragment addIncome;
@@ -79,20 +82,20 @@ public class MainActivity extends Activity implements OnDateSetListener {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         
         // enable ActionBar app icon to behave as action to toggle nav drawer
-        
-        getActionBar().setIcon(R.drawable.ic_drawer1);
+
+        getActionBar().setIcon(R.drawable.logo_small);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
 
         Intent i = getIntent();
-        User user = (User)i.getSerializableExtra("user");
+        user = (User)i.getSerializableExtra("user");
 
 
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.navigation_button,  /* nav drawer image to replace 'Up' caret */
+                R.drawable.ic_drawer1,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
                 ) {
@@ -142,6 +145,10 @@ public class MainActivity extends Activity implements OnDateSetListener {
         default:
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    public User getUser() {
+        return this.user;
     }
 
     @Override

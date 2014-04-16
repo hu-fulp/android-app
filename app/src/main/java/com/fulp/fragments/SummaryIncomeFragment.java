@@ -10,14 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.fulp.R;
+import com.fulp.activities.MainActivity;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateSelectionListener;
+import com.fulp.listeners.WebserviceListener;
 import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.income.CreateIncomeTask;
+import com.fulp.tasks.income.ListIncomeTask;
 
-public class SummaryIncomeFragment extends Fragment {
+import java.util.List;
+
+public class SummaryIncomeFragment extends Fragment implements WebserviceListener {
     private View mRootView;
 
     public SummaryIncomeFragment() {
@@ -35,6 +41,10 @@ public class SummaryIncomeFragment extends Fragment {
             }
         });
 
+
+        ListIncomeTask listIncomeTask = new ListIncomeTask(this, ((MainActivity)this.getActivity()).getUser());
+        listIncomeTask.execute();
+
         getActivity().setTitle("Inkomen overzicht");
 
         return mRootView;
@@ -46,5 +56,18 @@ public class SummaryIncomeFragment extends Fragment {
         AddIncomeFragment addIncomeFragment = new AddIncomeFragment();
         transaction.replace(R.id.content_frame, addIncomeFragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onComplete(List<?> data) {
+        
+
+
+        Toast.makeText(getActivity(), ((Income)data.get(0)).getName(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onFailure(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 }
