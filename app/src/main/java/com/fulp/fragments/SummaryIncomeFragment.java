@@ -14,7 +14,7 @@ import android.widget.Button;
 import com.fulp.R;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateSelectionListener;
-import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.income.CreateIncomeTask;
 
 public class SummaryIncomeFragment extends Fragment {

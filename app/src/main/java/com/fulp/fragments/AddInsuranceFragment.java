@@ -17,9 +17,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
-
-public class AddInsuranceFragment extends Fragment implements OnDateSetListener, DateSelectionListener {
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -63,9 +62,6 @@ public class AddInsuranceFragment extends Fragment implements AdapterView.OnItem
         });
         return mRootView;
 	}
-
-    @Override
-    public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
 
     private Insurance createInsurance() {
         //get fields
@@ -143,9 +139,6 @@ public class AddInsuranceFragment extends Fragment implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
-    @Override
-    public void selectDatum(View view) {
 
     public void onComplete(List<?> data) {
         Toast.makeText(getActivity(), data.get(0).toString(), Toast.LENGTH_LONG).show();
