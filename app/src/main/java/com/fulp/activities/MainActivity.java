@@ -6,6 +6,8 @@ import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.AddSubscriptionFragment;
 import com.fulp.fragments.DashboardFragment;
 import com.fulp.fragments.SummaryIncomeFragment;
+import com.fulp.fragments.SummaryInsuranceFragment;
+import com.fulp.fragments.SummarySubscriptionFragment;
 import com.fulp.listeners.DateSelectionListener;
 
 import android.os.Bundle;
@@ -51,6 +53,9 @@ public class MainActivity extends Activity implements OnDateSetListener {
     private AddSubscriptionFragment addSubscription;
     private DashboardFragment dashboard;
     private SummaryIncomeFragment summaryIncome;
+    private SummaryInsuranceFragment summaryInsurance;
+    private SummarySubscriptionFragment summarySubscription;
+
     //OnDateSetListeners
     private DateSelectionListener dateSelectionListener;
     private OnDateSetListener dateSetListener;
@@ -158,27 +163,38 @@ public class MainActivity extends Activity implements OnDateSetListener {
         	case 1:
         		//Income
                 summaryIncome = new SummaryIncomeFragment();
-
                 fragmentManager.beginTransaction().replace(R.id.content_frame, summaryIncome).commit();
+
+                /* Old reference, delete later */
+                // addIncome = new AddIncomeFragment();
+                // dateSetListener = addIncome;
+                // dateSelectionListener = addIncome;
+                // fragmentManager.beginTransaction().replace(R.id.content_frame, addIncome).commit();
+
         		break;
         	case 2:
         		//Insurance
+                summaryInsurance = new SummaryInsuranceFragment();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, summaryInsurance).commit();
 
-                addInsurance = new AddInsuranceFragment();
-                dateSetListener = addInsurance;
-                dateSelectionListener = addInsurance;
-                fragmentManager.beginTransaction().replace(R.id.content_frame, addIncome).commit();
-        		addInsurance = new AddInsuranceFragment();
-                dateSetListener = addInsurance;
-                dateSelectionListener = addInsurance;
-        		fragmentManager.beginTransaction().replace(R.id.content_frame, addInsurance).commit();
+                /* Old reference, delete later */
+        		// addInsurance = new AddInsuranceFragment();
+                // dateSetListener = addInsurance;
+                // dateSelectionListener = addInsurance;
+        		// fragmentManager.beginTransaction().replace(R.id.content_frame, addInsurance).commit();
+
         		break;
             case 3:
                 //Subscription
-                addSubscription = new AddSubscriptionFragment();
-                dateSetListener = addSubscription;
-                dateSelectionListener = addSubscription;
-                fragmentManager.beginTransaction().replace(R.id.content_frame, addSubscription).commit();
+                summarySubscription = new SummarySubscriptionFragment();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, summarySubscription).commit();
+
+                /* Old reference, delete later */
+                // addSubscription = new AddSubscriptionFragment();
+                // dateSetListener = addSubscription;
+                // dateSelectionListener = addSubscription;
+                // fragmentManager.beginTransaction().replace(R.id.content_frame, addSubscription).commit();
+
                 break;
         	default:
         		dashboard = new DashboardFragment();

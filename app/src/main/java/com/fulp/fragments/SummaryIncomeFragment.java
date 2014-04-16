@@ -35,7 +35,7 @@ public class SummaryIncomeFragment extends Fragment {
             }
         });
 
-        getActivity().setTitle("Verzekeringen overzicht");
+        getActivity().setTitle("Inkomen overzicht");
 
         return mRootView;
     }
