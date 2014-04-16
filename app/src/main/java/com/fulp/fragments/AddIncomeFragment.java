@@ -3,13 +3,10 @@ package com.fulp.fragments;
 import com.fulp.R;
 import com.fulp.domain.Income;
 import com.fulp.listeners.DateClickListener;
-import com.fulp.listeners.DateSelectionListener;
 import com.fulp.listeners.WebserviceListener;
 import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.tasks.income.CreateIncomeTask;
 
-import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,14 +16,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
 
-public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, OnDateSetListener, WebserviceListener, DateSelectionListener {
+public class AddIncomeFragment extends Fragment implements OnItemSelectedListener, WebserviceListener {
 
 	private String mSelectedInkomstenType;
 	private String mSelectedInterval;
@@ -34,7 +30,8 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 	private EditText mStartDateEdit;
     private EditText mEndDateEdit;
     private WebserviceListener webserviceListener;
-    private DateClickListener dateClickListener;
+    private DateClickListener startDateClickListener;
+    private DateClickListener endDateClickListener;
 	
 	public AddIncomeFragment() {
         // Empty constructor required for fragment subclasses
@@ -51,11 +48,12 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
         Button save = (Button)mRootView.findViewById(R.id.income_save_button);
         webserviceListener = this;
 
-        dateClickListener = new DateClickListener(this);
         mStartDateEdit = (EditText)mRootView.findViewById(R.id.add_income_startdate_edit);
-        mStartDateEdit.setOnClickListener(dateClickListener);
+        startDateClickListener = new DateClickListener(getActivity(), this, mStartDateEdit);
+        mStartDateEdit.setOnClickListener(startDateClickListener);
         mEndDateEdit = (EditText)mRootView.findViewById(R.id.add_income_enddate_edit);
-        mEndDateEdit.setOnClickListener(dateClickListener);
+        endDateClickListener = new DateClickListener(getActivity(), this, mEndDateEdit);
+        mEndDateEdit.setOnClickListener(endDateClickListener);
 
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -133,18 +131,6 @@ public class AddIncomeFragment extends Fragment implements OnItemSelectedListene
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public void selectDatum(View view){
-		mStartDateEdit = (EditText)view;
-		DialogFragment newFragment = new DatePickerFragment();
-	    newFragment.show(getFragmentManager(), "datePicker");
-	}
-	
-	@Override
-	public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-		monthOfYear++;
-		mStartDateEdit.setText("" + year + "-" + monthOfYear + "-" + dayOfMonth);
 	}
 
     @Override

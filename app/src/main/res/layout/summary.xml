@@ -16,15 +16,6 @@
         android:textColor="#FFEC6D0D"
         android:layout_marginBottom="20dp" />
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_new"
-        android:layout_below="@id/summary_title"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp" />
-
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
@@ -33,7 +24,7 @@
         android:divider="#d3d3d3"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector"
-        android:layout_below="@id/add_button"
+        android:layout_below="@+id/summary_title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="false" />
 
