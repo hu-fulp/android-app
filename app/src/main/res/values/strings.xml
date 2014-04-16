@@ -78,4 +78,7 @@
     <string name="add_subscription_enddate">Klik om een einddatum te selecteren</string>
 
     <string name="button_save">Opslaan</string>
+
+    <string name="button_new">Nieuw</string>
+
 </resources>

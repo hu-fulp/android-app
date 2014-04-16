@@ -93,8 +93,7 @@
         android:layout_marginTop="5dp"
         android:inputType="none"
         android:editable="false"
-        android:hint="@string/add_income_startdate"
-        android:onClick="selectDatum" />
+        android:hint="@string/add_income_startdate" />
     
     <TextView
         android:id="@+id/add_income_enddate_label"
@@ -113,8 +112,7 @@
         android:layout_marginTop="5dp"
         android:inputType="none"
         android:editable="false"
-        android:hint="@string/add_income_enddate"
-        android:onClick="selectDatum" />
+        android:hint="@string/add_income_enddate" />
 
     <Button
         android:layout_width="wrap_content"

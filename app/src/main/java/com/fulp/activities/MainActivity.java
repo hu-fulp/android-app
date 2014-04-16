@@ -5,6 +5,7 @@ import com.fulp.fragments.AddIncomeFragment;
 import com.fulp.fragments.AddInsuranceFragment;
 import com.fulp.fragments.AddSubscriptionFragment;
 import com.fulp.fragments.DashboardFragment;
+import com.fulp.fragments.SummaryIncomeFragment;
 import com.fulp.listeners.DateSelectionListener;
 
 import android.os.Bundle;
@@ -22,9 +23,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends Activity implements OnDateSetListener {
 	
@@ -41,6 +39,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
     private AddInsuranceFragment addInsurance;
     private AddSubscriptionFragment addSubscription;
     private DashboardFragment dashboard;
+    private SummaryIncomeFragment summaryIncome;
     //OnDateSetListeners
     private DateSelectionListener dateSelectionListener;
     private OnDateSetListener dateSetListener;
@@ -133,15 +132,17 @@ public class MainActivity extends Activity implements OnDateSetListener {
         		break;
         	case 1:
         		//Income
-        		addIncome = new AddIncomeFragment();
-                dateSetListener = addIncome;
-                dateSelectionListener = addIncome;
-        		fragmentManager.beginTransaction().replace(R.id.content_frame, addIncome).commit();
+                summaryIncome = new SummaryIncomeFragment();
+
+                fragmentManager.beginTransaction().replace(R.id.content_frame, summaryIncome).commit();
         		break;
         	case 2:
         		//Insurance
-        		addInsurance = new AddInsuranceFragment();
-        		fragmentManager.beginTransaction().replace(R.id.content_frame, addInsurance).commit();
+
+                addInsurance = new AddInsuranceFragment();
+                dateSetListener = addInsurance;
+                dateSelectionListener = addInsurance;
+                fragmentManager.beginTransaction().replace(R.id.content_frame, addIncome).commit();
         		break;
             case 3:
                 //Subscription
