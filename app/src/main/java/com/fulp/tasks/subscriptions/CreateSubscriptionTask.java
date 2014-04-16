@@ -1,7 +1,7 @@
 package com.fulp.tasks.subscriptions;
 
 import com.fulp.listeners.WebserviceListener;
-import com.fulp.tasks.PostDataTask;
+import com.fulp.tasks.WebserviceRequestTask;
 import com.fulp.domain.Subscription;
 
 import org.json.JSONException;
@@ -14,11 +14,12 @@ import java.util.List;
  * Created by royfokker on 02-04-14.
  */
 
-public class CreateSubscriptionTask extends PostDataTask {
+public class CreateSubscriptionTask extends WebserviceRequestTask {
 
     private final WebserviceListener listener;
 
     public CreateSubscriptionTask(WebserviceListener listener, Subscription subscription) {
+        super("Subscription/create");
         this.listener = listener;
 
         parameters.put("name", subscription.getName());
@@ -27,8 +28,6 @@ public class CreateSubscriptionTask extends PostDataTask {
         parameters.put("interval", subscription.getInterval());
         parameters.put("end", subscription.getEnd());
         parameters.put("category", subscription.getCategory());
-
-        this.resource = "Subscription/create";
     }
 
     @Override

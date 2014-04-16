@@ -29,13 +29,27 @@ import java.util.Map;
  * Created by royfokker on 02-04-14.
  */
 
-public abstract class PostDataTask extends AsyncTask<String, Void, String> {
+public abstract class WebserviceRequestTask extends AsyncTask<String, Void, String> {
 
     protected String msg;
     protected Map<String, String> parameters = new HashMap<String, String>();
     protected String endpoint = "http://149.210.161.130/fulp_webservice/public/1/";
-    protected String resource;
+    private String resource;
+    private String authUser;
+    private String authPassword;
     protected abstract void onPostExecute(String sJson);
+
+    public WebserviceRequestTask(String resource) {
+        this.resource = resource;
+        this.authUser = "test";
+        this.authPassword = "password";
+    }
+
+    public WebserviceRequestTask(String resource, String authUser, String authPassword) {
+        this.resource = resource;
+        this.authUser = authUser;
+        this.authPassword = authPassword;
+    }
 
     @Override
     protected String doInBackground(String... args) {
@@ -50,7 +64,6 @@ public abstract class PostDataTask extends AsyncTask<String, Void, String> {
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
             HttpPost postMethod = new HttpPost(url);
 
-
             List<NameValuePair> params = new LinkedList<NameValuePair>();
 
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
@@ -58,8 +71,8 @@ public abstract class PostDataTask extends AsyncTask<String, Void, String> {
             }
 
             postMethod.setEntity(new UrlEncodedFormEntity(params));
-            String encoded = Base64.encodeToString(("7d2b63335b8a1cfa4d55927af70e801a4eb0c88a07cb40cfb79165b9e2919e7d5a36e112d1ed1b5969399664ae56fb51093bd2f6b210c766ddb4640f2e473e9b" + ":" + "7").getBytes(), Base64.NO_WRAP);
-            postMethod.setHeader("Authorization", "Basic "+encoded);
+            String encoded = Base64.encodeToString((authUser + ":" + authPassword).getBytes(), Base64.NO_WRAP);
+            postMethod.setHeader("Authorization", "Basic " + encoded);
             String output = httpClient.execute(postMethod,responseHandler);
 
             Log.d("API response: ", output);
@@ -68,7 +81,7 @@ public abstract class PostDataTask extends AsyncTask<String, Void, String> {
         }
         catch(IOException e){
             e.printStackTrace();
-            msg = e.getMessage() + " url = " + url;
+            msg = "Foutje: "  + e.getMessage() + " url = " + url;
         }
 
         return null;
