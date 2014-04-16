@@ -80,7 +80,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
         
         // enable ActionBar app icon to behave as action to toggle nav drawer
         
-        getActionBar().setIcon(R.drawable.logo_small);
+        getActionBar().setIcon(R.drawable.ic_drawer1);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
@@ -92,7 +92,7 @@ public class MainActivity extends Activity implements OnDateSetListener {
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer1,  /* nav drawer image to replace 'Up' caret */
+                R.drawable.navigation_button,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
                 ) {
