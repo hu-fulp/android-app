@@ -25,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.fulp.domain.User;
 
@@ -77,6 +78,9 @@ public class MainActivity extends Activity {
 
         Intent i = getIntent();
         user = (User)i.getSerializableExtra("user");
+
+
+        ((TextView)findViewById(R.id.label_current_user)).setText(user.getName());
 
 
         mDrawerToggle = new ActionBarDrawerToggle(
